@@ -1,5 +1,7 @@
+import { homeContainers, pageContainers, quizConfig } from './config.js';
+
 // Fonction pour créer les containers sur la page d'accueil
-function createContainers() {
+export function createContainers() {
     const grid = document.querySelector('.container-grid');
     if (!grid) return;
 
@@ -25,7 +27,7 @@ function createContainers() {
 }
 
 // Fonction pour créer les sous-containers dans les pages individuelles
-function createSubContainers(pageNumber) {
+export function createSubContainers(pageNumber) {
     const grid = document.querySelector('.sub-container-grid');
     if (!grid) return;
 
@@ -50,13 +52,10 @@ function createSubContainers(pageNumber) {
         `;
         grid.appendChild(containerElement);
     });
-
-    // Mettre à jour le container quiz
-    updateQuizContainer(pageNumber);
 }
 
 // Fonction pour mettre à jour le container quiz
-function updateQuizContainer(pageNumber) {
+export function updateQuizContainer(pageNumber) {
     const quizContainer = document.querySelector('.quiz-container');
     if (!quizContainer) return;
 
@@ -83,7 +82,7 @@ function updateQuizContainer(pageNumber) {
 }
 
 // Fonction pour mettre à jour l'état du quiz
-function updateQuizStatus(pageNumber) {
+export function updateQuizStatus(pageNumber) {
     const quizContainer = document.getElementById('quizContainer');
     const quizStatus = document.getElementById('quizStatus');
     const quizToggleBtn = document.querySelector('.quiz-toggle-btn');
@@ -113,7 +112,7 @@ window.toggleQuiz = function(pageNumber) {
 };
 
 // Vérifier si l'utilisateur est connecté et afficher les contrôles admin
-function checkAuth() {
+export function checkAuth() {
     const adminControls = document.getElementById('adminControls');
     if (sessionStorage.getItem('isLoggedIn') === 'true') {
         if (adminControls) {
@@ -127,7 +126,7 @@ function checkAuth() {
 }
 
 // Ajouter les boutons de quiz si l'utilisateur est connecté
-function addQuizButtons() {
+export function addQuizButtons() {
     if (sessionStorage.getItem('isLoggedIn') === 'true') {
         const currentPage = window.location.pathname.match(/page(\d+)\.html/);
         if (currentPage) {
@@ -148,6 +147,12 @@ function addQuizButtons() {
 }
 
 // Initialiser les containers au chargement de la page
-if (document.querySelector('.container-grid')) {
-    createContainers();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const pageNumber = document.body.getAttribute('data-page-number');
+    if (pageNumber) {
+        createSubContainers(pageNumber);
+        updateQuizContainer(pageNumber);
+    } else if (document.querySelector('.container-grid')) {
+        createContainers();
+    }
+});

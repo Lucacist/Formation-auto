@@ -1,5 +1,5 @@
 // Configuration des containers de la page d'accueil
-const homeContainers = [
+export const homeContainers = [
     {
         id: 1,
         title: "Formation sécurité",
@@ -183,7 +183,7 @@ const homeContainers = [
 ];
 
 // Configuration des sous-containers pour chaque page
-const pageContainers = {
+export const pageContainers = {
     page1: [
         {
             id: 1,
@@ -1134,3 +1134,14 @@ const pageContainers = {
         }
     ]
 };
+
+// Configuration des quiz pour chaque page
+export const quizConfig = {};
+for (let i = 1; i <= 30; i++) {
+    quizConfig[`page${i}`] = {
+        title: `Quiz ${i}`,
+        image: `https://picsum.photos/300/200?random=quiz${i}`,
+        link: `#quiz${i}`,
+        description: `Description du quiz ${i}`
+    };
+}

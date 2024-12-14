@@ -1,4 +1,6 @@
-// Informations de connexion (à remplacer par une vraie authentification sécurisée)
+import { quizStatesRef, onValue, set } from './firebase-config.js';
+
+// Informations de connexion
 const validCredentials = {
     username: 'admin',
     password: 'admin123'
@@ -7,20 +9,29 @@ const validCredentials = {
 // États des quiz pour chaque page
 let quizStates = {};
 
-// Initialisation des états des quiz depuis le localStorage global
+// Initialisation des états des quiz
 function initQuizStates() {
-    console.log('Initialisation des états des quiz...');
-    const savedStates = localStorage.getItem('globalQuizStates');
-    if (savedStates) {
-        quizStates = JSON.parse(savedStates);
-        console.log('États chargés:', quizStates);
-    } else {
-        for (let i = 1; i <= 30; i++) {
-            quizStates[`page${i}`] = false;
+    onValue(quizStatesRef, (snapshot) => {
+        const states = snapshot.val();
+        if (states) {
+            quizStates = states;
+            console.log('États chargés:', quizStates);
+        } else {
+            // Initialiser avec tous les quiz désactivés
+            for (let i = 1; i <= 30; i++) {
+                quizStates[`page${i}`] = false;
+            }
+            // Sauvegarder dans Firebase
+            set(quizStatesRef, quizStates);
+            console.log('Nouveaux états créés:', quizStates);
         }
-        localStorage.setItem('globalQuizStates', JSON.stringify(quizStates));
-        console.log('Nouveaux états créés:', quizStates);
-    }
+        
+        // Mettre à jour l'interface si on est sur une page de quiz
+        const pageNumber = document.body.getAttribute('data-page-number');
+        if (pageNumber) {
+            updateQuizStatus(pageNumber);
+        }
+    });
 }
 
 // Gestion de la modal de connexion
@@ -113,8 +124,6 @@ if (logoutBtn) {
 
 // Fonction pour basculer l'état d'un quiz
 function toggleQuiz(pageNumber) {
-    console.log('Tentative de basculement du quiz', pageNumber);
-    
     if (!isAdmin()) {
         console.log('Non autorisé: utilisateur non admin');
         return;
@@ -124,44 +133,31 @@ function toggleQuiz(pageNumber) {
     quizStates[pageKey] = !quizStates[pageKey];
     console.log('Nouvel état du quiz:', pageKey, quizStates[pageKey]);
     
-    // Sauvegarder dans le localStorage global
-    localStorage.setItem('globalQuizStates', JSON.stringify(quizStates));
-    
-    // Mettre à jour l'interface
-    updateQuizStatus(pageNumber);
+    // Sauvegarder dans Firebase
+    set(quizStatesRef, quizStates);
 }
 
 // Fonction pour vérifier si un quiz est activé
 function isQuizEnabled(pageNumber) {
-    const currentStates = JSON.parse(localStorage.getItem('globalQuizStates') || '{}');
-    const isEnabled = currentStates[`page${pageNumber}`] === true;
-    console.log('État du quiz', pageNumber, ':', isEnabled);
-    return isEnabled;
+    const pageKey = `page${pageNumber}`;
+    return quizStates[pageKey] === true;
 }
 
 // Fonction pour vérifier si l'utilisateur est admin
 function isAdmin() {
-    const isAdminUser = localStorage.getItem('isAdmin') === 'true';
-    console.log('Est admin?', isAdminUser);
-    return isAdminUser;
+    return localStorage.getItem('isAdmin') === 'true';
 }
 
 // Fonction pour mettre à jour l'état du quiz
 function updateQuizStatus(pageNumber) {
-    console.log('Mise à jour du statut du quiz', pageNumber);
-    
     const quizContainer = document.querySelector('.quiz-container');
     const quizLockedMessage = document.getElementById('quizLockedMessage');
     const quizLink = document.getElementById('quizLink');
     const quizToggleBtn = document.querySelector('.quiz-toggle-btn');
     
-    if (!quizContainer || !quizLockedMessage || !quizLink) {
-        console.log('Éléments manquants dans le DOM');
-        return;
-    }
+    if (!quizContainer || !quizLockedMessage || !quizLink) return;
     
     const isEnabled = isQuizEnabled(pageNumber);
-    console.log('Quiz activé?', isEnabled);
     
     if (isEnabled) {
         quizContainer.classList.remove('quiz-locked');
@@ -206,19 +202,65 @@ function addQuizButtonListeners() {
     }
 }
 
-// Au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('Page chargée');
-    initQuizStates();
-    
-    const pageNumber = document.body.getAttribute('data-page-number');
-    console.log('Numéro de page:', pageNumber);
-    
-    if (pageNumber) {
-        updateQuizStatus(pageNumber);
-    }
+// Exporter les fonctions nécessaires
+window.login = function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    // Vérifier si l'utilisateur est admin
+    if (username === validCredentials.username && password === validCredentials.password) {
+        console.log('Connexion admin réussie');
+        loginModal.style.display = 'none';
+        document.getElementById('loginBtn').style.display = 'none';
+        
+        // Stocker l'état de connexion
+        localStorage.setItem('isAdmin', 'true');
+        
+        // Afficher les contrôles admin
+        const adminControls = document.getElementById('adminControls');
+        if (adminControls) {
+            adminControls.style.display = 'block';
+            console.log('Contrôles admin affichés');
+        }
+        
+        // Ajouter les écouteurs d'événements aux boutons
+        addQuizButtonListeners();
+        
+        // Rafraîchir l'état du quiz
+        const pageNumber = document.body.getAttribute('data-page-number');
+        if (pageNumber) {
+            updateQuizStatus(pageNumber);
+        }
+    } else {
+        alert('Identifiants incorrects');
+    }
+};
+
+window.logout = function logout() {
+    // Déconnexion
+    localStorage.removeItem('isAdmin');
+    
+    // Cacher les contrôles admin
+    const adminControls = document.getElementById('adminControls');
+    if (adminControls) {
+        adminControls.style.display = 'none';
+    }
+    
+    // Afficher le bouton de connexion
+    const loginBtn = document.getElementById('loginBtn');
+    if (loginBtn) {
+        loginBtn.style.display = 'block';
+    }
+    
+    // Réinitialiser le formulaire
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    if (usernameInput) usernameInput.value = '';
+    if (passwordInput) passwordInput.value = '';
+};
+
+window.toggleQuiz = toggleQuiz;
+
+window.checkAuth = function checkAuth() {
     if (isAdmin()) {
         console.log('Utilisateur admin détecté');
         const adminControls = document.querySelectorAll('.admin-only, #adminControls');
@@ -234,6 +276,12 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log('Utilisateur non admin');
     }
+};
+
+// Initialiser au chargement
+document.addEventListener('DOMContentLoaded', () => {
+    initQuizStates();
+    checkAuth();
 });
 
 // Vérifier l'état de connexion au chargement de la page
