@@ -87,16 +87,17 @@ export function updateQuizStatus(pageNumber) {
     const quizStatus = document.getElementById('quizStatus');
     const quizToggleBtn = document.querySelector('.quiz-toggle-btn');
     
-    if (quizContainer && quizStatus && quizToggleBtn) {
+    // On vérifie seulement quizStatus et quizToggleBtn pour le header
+    if (quizStatus && quizToggleBtn) {
         const isEnabled = isQuizEnabled(pageNumber);
         
         if (isEnabled) {
-            quizContainer.classList.remove('quiz-locked');
+            if (quizContainer) quizContainer.classList.remove('quiz-locked');
             quizStatus.textContent = 'Quiz activé';
             quizToggleBtn.textContent = 'Désactiver le Quiz';
             quizToggleBtn.style.backgroundColor = '#e74c3c';
         } else {
-            quizContainer.classList.add('quiz-locked');
+            if (quizContainer) quizContainer.classList.add('quiz-locked');
             quizStatus.textContent = 'Quiz désactivé';
             quizToggleBtn.textContent = 'Activer le Quiz';
             quizToggleBtn.style.backgroundColor = '#3498db';
