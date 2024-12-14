@@ -3,181 +3,181 @@ const homeContainers = [
     {
         id: 1,
         title: "Formation sécurité",
-        image: "/img/accueil/securite.webp",
+        image: "./img/accueil/securite.webp",
         link: "page1.html"
     },
     {
         id: 2,
         title: "Le Véhicule Automobile",
-        image: "/img/accueil/vehicule-auto.webp",
+        image: "./img/accueil/vehicule-auto.webp",
         link: "page2.html"
     },
     {
         id: 3,
         title: "Les Pièces du Moteur",
-        image: "/img/accueil/pieces.webp",
+        image: "./img/accueil/pieces.webp",
         link: "page3.html"
     },
     {
         id: 4,
         title: "La Distribution",
-        image: "/img/accueil/Courroie_distribution.webp",
+        image: "./img/accueil/Courroie_distribution.webp",
         link: "page4.html"
     },
     {
         id: 5,
         title: "Le Cycle à 4 temps",
-        image: "/img/accueil/cycle-4-temps.webp",
+        image: "./img/accueil/cycle-4-temps.webp",
         link: "page5.html"
     },
     {
         id: 6,
         title: "Les Caractéristiques du Moteur",
-        image: "/img/accueil/caracteristique-moteur.gif",
+        image: "./img/accueil/caracteristique-moteur.gif",
         link: "page6.html"
     },
     {
         id: 7,
         title: "Les Lubrifiants / Le Graissage",
-        image: "/img/accueil/lubrifiants.webp",
+        image: "./img/accueil/lubrifiants.webp",
         link: "page7.html"
     },
     {
         id: 8,
         title: "Le Refroidissement",
-        image: "/img/accueil/refroidissement.webp",
+        image: "./img/accueil/refroidissement.webp",
         link: "page8.html"
     },
     {
         id: 9,
         title: "Les Pneumatiques",
-        image: "/img/accueil/pneu.webp",
+        image: "./img/accueil/pneu.webp",
         link: "page9.html"
     },
     {
         id: 10,
         title: "La Suspension",
-        image: "/img/accueil/suspension.webp",
+        image: "./img/accueil/suspension.webp",
         link: "page10.html"
     },
     {
         id: 11,
         title: "La Suspension Pilotée",
-        image: "/img/accueil/suspension-pilotée.webp",
+        image: "./img/accueil/suspension-pilotée.webp",
         link: "page11.html"
     },
     {
         id: 12,
         title: "Les Trains Roulants",
-        image: "/img/accueil/Train-roulant.webp",
+        image: "./img/accueil/Train-roulant.webp",
         link: "page12.html"
     },
     {
         id: 13,
         title: "Le Freinage / ABS - ESP",
-        image: "/img/accueil/freinage.webp",
+        image: "./img/accueil/freinage.webp",
         link: "page13.html"
     },
     {
         id: 14,
         title: "La Direction",
-        image: "/img/accueil/direction.webp",
+        image: "./img/accueil/direction.webp",
         link: "page14.html"
     },
     {
         id: 15,
         title: "La Transmission",
-        image: "/img/accueil/transmission.webp",
+        image: "./img/accueil/transmission.webp",
         link: "page15.html"
     },
     {
         id: 16,
         title: "Electricité",
-        image: "/img/accueil/elec.webp",
+        image: "./img/accueil/elec.webp",
         link: "page16.html"
     },
     {
         id: 17,
         title: "Alternateur / Démarreur",
-        image: "/img/accueil/alternateur.webp",
+        image: "./img/accueil/alternateur.webp",
         link: "page17.html"
     },
     {
         id: 18,
         title: "La Signalisation",
-        image: "/img/accueil/signalisation.webp",
+        image: "./img/accueil/signalisation.webp",
         link: "page18.html"
     },
     {
         id: 19,
         title: "Les Carburants",
-        image: "/img/accueil/carburants.webp",
+        image: "./img/accueil/carburants.webp",
         link: "page19.html"
     },
     {
         id: 20,
         title: "Les Capteurs de l'injection",
-        image: "/img/accueil/Systeme-general.webp",
+        image: "./img/accueil/Systeme-general.webp",
         link: "page20.html"
     },
     {
         id: 21,
         title: "Ingection Essence / Diesel",
-        image: "/img/accueil/injection.webp",
+        image: "./img/accueil/injection.webp",
         link: "page21.html"
     },
     {
         id: 22,
         title: "La Climatisation Automobile",
-        image: "/img/accueil/clim.webp",
+        image: "./img/accueil/clim.webp",
         link: "page22.html"
     },
     {
         id: 23,
         title: "Allumage",
-        image: "/img/accueil/allumage.webp",
+        image: "./img/accueil/allumage.webp",
         link: "page23.html"
     },
     {
         id: 24,
         title: "La Suralimentation",
-        image: "/img/accueil/suralimentation.gif",
+        image: "./img/accueil/suralimentation.gif",
         link: "page24.html"
     },
     {
         id: 25,
         title: "La Dépollution",
-        image: "/img/accueil/depollution.webp",
+        image: "./img/accueil/depollution.webp",
         link: "page25.html"
     },
     {
         id: 26,
         title: "Les Airbags",
-        image: "/img/accueil/airbags.webp",
+        image: "./img/accueil/airbags.webp",
         link: "page26.html"
     },
     {
         id: 27,
         title: "Le MUX",
-        image: "/img/accueil/mux.webp",
+        image: "./img/accueil/mux.webp",
         link: "page27.html"
     },
     {
         id: 28,
         title: "Le Tri Sélectif",
-        image: "/img/accueil/tri.webp",
+        image: "./img/accueil/tri.webp",
         link: "page28.html"
     },
     {
         id: 29,
         title: "Les Aides à la Conduite",
-        image: "/img/accueil/aide.webp",
+        image: "./img/accueil/aide.webp",
         link: "page29.html"
     },
     {
         id: 30,
         title: "TP Atelier",
-        image: "/img/accueil/tp-atelier.webp",
+        image: "./img/accueil/tp-atelier.webp",
         link: "page30.html"
     }
 ];
