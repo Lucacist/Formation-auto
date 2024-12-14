@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance des véhicules</title>    
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Maintenance des véhicules</h1>
+        <nav>
+            <button id="loginBtn" class="login-btn">Se connecter</button>
+            <div id="adminControls" style="display: none;">
+                <button id="logoutBtn">Déconnexion</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <form id="loginForm">
+                <h2>Connexion</h2>
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <div class="container-grid">
+            <!-- Les containers seront générés en JavaScript -->
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
