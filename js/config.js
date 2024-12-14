@@ -214,34 +214,23 @@ export const pageContainers = {
     page2: [
         {
             id: 1,
-            title: "Sous-container 1 de la page 2",
+            title: "Le Cours",
             image: "https://picsum.photos/300/200?random=201",
             link: "#"
         },
         {
             id: 2,
-            title: "Sous-container 2 de la page 2",
+            title: "Vidéo Fabrication BMW",
             image: "https://picsum.photos/300/200?random=202",
             link: "#"
         },
         {
             id: 3,
-            title: "Sous-container 3 de la page 2",
+            title: "Tous les Véhicules",
             image: "https://picsum.photos/300/200?random=203",
             link: "#"
         },
-        {
-            id: 4,
-            title: "Sous-container 4 de la page 2",
-            image: "https://picsum.photos/300/200?random=204",
-            link: "#"
-        },
-        {
-            id: 5,
-            title: "Sous-container 5 de la page 2",
-            image: "https://picsum.photos/300/200?random=205",
-            link: "#"
-        }
+       
     ],
     page3: [
         {

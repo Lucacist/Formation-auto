@@ -29,7 +29,7 @@
     }
 
     .main-header nav {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         gap: 0.5rem;
         align-items: center;
