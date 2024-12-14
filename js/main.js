@@ -60,12 +60,12 @@ export function updateQuizContainer(pageNumber) {
     if (!quizContainer) return;
 
     const pageKey = `page${pageNumber}`;
-    const quizData = quizConfig[pageKey] || {
-        title: `Quiz ${pageNumber}`,
-        image: `https://picsum.photos/300/200?random=quiz${pageNumber}`,
-        link: `#quiz${pageNumber}`,
-        description: `Description du quiz ${pageNumber}`
-    };
+    const quizData = quizConfig[pageKey];
+
+    if (!quizData) {
+        console.error(`No quiz data found for ${pageKey}`);
+        return;
+    }
 
     const quizElement = quizContainer.querySelector('.quiz-item');
     if (quizElement) {
@@ -73,9 +73,9 @@ export function updateQuizContainer(pageNumber) {
             <img src="${quizData.image}" alt="${quizData.title}">
             <h3>${quizData.title}</h3>
             <div class="quiz-status">
-                <p class="quiz-description">${quizData.description}</p>
+                <p class="quiz-description">${quizData.description || ''}</p>
                 <p id="quizLockedMessage" style="display: none;">Quiz verrouillé</p>
-                <a href="${quizData.link}" class="quiz-link" id="quizLink">Accéder au Quiz</a>
+                <a href="${quizData.link}" target="_blank" class="quiz-link" id="quizLink">Accéder au Quiz</a>
             </div>
         `;
     }

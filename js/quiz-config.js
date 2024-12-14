@@ -1,16 +1,11 @@
 // Configuration des quiz pour chaque page
 if (typeof quizConfig === 'undefined') {
     const quizConfig = {
-        page1: {
-            title: "Quiz - Formation sécurité",
-            image: "img/accueil/securite.webp",
-            link: "#quiz1",
-            description: "Testez vos connaissances sur la sécurité"
-        },
+        
         page2: {
             title: "Quiz - Le Véhicule Automobile",
             image: "img/accueil/vehicule-auto.webp",
-            link: "#quiz2",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSdvH894CMQQuJg95xwsmNHkHhTtFKYlnhv11ZoatkiodpXh5w/viewform",
             description: "Évaluez votre compréhension du véhicule automobile"
         },
         page3: {

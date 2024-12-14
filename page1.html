@@ -5,34 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page 1 - Container</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body data-page-number="1">
     <header class="main-header">
         <h1>Container 1</h1>
         <nav>
             <a href="index.html" class="back-btn">Retour à l'accueil</a>
-            <div id="adminControls" style="display: none;">
-                <button class="quiz-toggle-btn">Activer le Quiz</button>
-                <span id="quizStatus" class="quiz-status-text">Quiz désactivé</span>
-            </div>
         </nav>
     </header>
         
     <div class="sub-container-wrapper">
         <div class="sub-container-grid">
             <!-- Les sous-containers seront ajoutés dynamiquement -->
-        </div>
-
-        <!-- Container Quiz -->
-        <div class="quiz-container" id="quizContainer">
-            <div class="container-item quiz-item">
-                <img src="https://picsum.photos/300/200?random=quiz1" alt="Quiz Image">
-                <h3>Quiz Container 1</h3>
-                <div class="quiz-status">
-                    <p id="quizLockedMessage" style="display: none;">Quiz verrouillé</p>
-                    <a href="#" class="quiz-link" id="quizLink">Accéder au Quiz</a>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -45,15 +30,13 @@
     <script type="module" src="js/auth.js"></script>
     <script type="module" src="js/main.js"></script>
     
-    
     <script type="module">
-        import { createSubContainers, updateQuizContainer } from './js/main.js';
+        import { createSubContainers } from './js/main.js';
         
         document.addEventListener('DOMContentLoaded', () => {
             const pageNumber = document.body.getAttribute('data-page-number');
             if (pageNumber) {
                 createSubContainers(pageNumber);
-                updateQuizContainer(pageNumber);
             }
         });
     </script>
