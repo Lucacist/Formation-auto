@@ -235,38 +235,38 @@ export const pageContainers = {
     page3: [
         {
             id: 1,
-            title: "Sous-container 1 de la page 3",
-            image: "https://picsum.photos/300/200?random=301",
-            link: "#"
+            title: "Le Cours",
+            image: "./img/vehicule/cours.png",
+            link: "https://docs.google.com/presentation/d/1oItt02w3Y0TSPzKaviYS5uwvmwkKF-yK/edit#slide=id.p1"
         },
         {
             id: 2,
-            title: "Sous-container 2 de la page 3",
-            image: "https://picsum.photos/300/200?random=302",
-            link: "#"
+            title: "Animation Moteur Ford",
+            image: "./img/moteur/bloc-moteur.png",
+            link: "https://www.youtube.com/watch?v=bTB4V-M_vmc"
         },
         {
             id: 3,
-            title: "Sous-container 3 de la page 3",
-            image: "https://picsum.photos/300/200?random=303",
+            title: "Documentation",
+            image: "./img/moteur/documentation.png",
             link: "#"
         },
         {
             id: 4,
-            title: "Sous-container 4 de la page 3",
-            image: "https://picsum.photos/300/200?random=304",
+            title: "Méthode",
+            image: "./img/moteur/doc-moteur/segments-de-piston.svg",
             link: "#"
         },
         {
             id: 5,
-            title: "Sous-container 5 de la page 3",
-            image: "https://picsum.photos/300/200?random=305",
-            link: "#"
+            title: "Jeux",
+            image: "./img/moteur/jeux-moteurs.png",
+            link: "https://learningapps.org/watch?v=pz6i744i220"
         },
         {
-            id: 5,
-            title: "Sous-container 5 de la page 3",
-            image: "https://picsum.photos/300/200?random=305",
+            id: 6,
+            title: "Jeux",
+            image: "./img/moteur/jeux2.png",
             link: "#"
         }
     ],
