@@ -1,4 +1,4 @@
-import { homeContainers, pageContainers, quizConfig } from './config.js';
+import { homeContainers, pageContainers } from './config.js';
 
 // Fonction pour créer les containers sur la page d'accueil
 export function createContainers() {
@@ -56,29 +56,34 @@ export function createSubContainers(pageNumber) {
 
 // Fonction pour mettre à jour le container quiz
 export function updateQuizContainer(pageNumber) {
-    const quizContainer = document.querySelector('.quiz-container');
+    const quizContainer = document.getElementById('quizContainer');
     if (!quizContainer) return;
 
     const pageKey = `page${pageNumber}`;
-    const quizData = quizConfig[pageKey];
+    
+    // Importer directement depuis quiz-config.js
+    import('./quiz-config.js').then(module => {
+        const quizData = module.quizConfig[pageKey];
+        
+        if (!quizData) {
+            console.error(`No quiz data found for ${pageKey}`);
+            return;
+        }
 
-    if (!quizData) {
-        console.error(`No quiz data found for ${pageKey}`);
-        return;
-    }
-
-    const quizElement = quizContainer.querySelector('.quiz-item');
-    if (quizElement) {
-        quizElement.innerHTML = `
-            <img src="${quizData.image}" alt="${quizData.title}">
-            <h3>${quizData.title}</h3>
-            <div class="quiz-status">
-                <p class="quiz-description">${quizData.description || ''}</p>
-                <p id="quizLockedMessage" style="display: none;">Quiz verrouillé</p>
-                <a href="${quizData.link}" target="_blank" class="quiz-link" id="quizLink">Accéder au Quiz</a>
+        // Générer le HTML du quiz
+        quizContainer.innerHTML = `
+            <div class="container-item quiz-item">
+                <img src="${quizData.image}" alt="${quizData.title}">
+                <h3>${quizData.title}</h3>
+                <div class="quiz-status">
+                    <p id="quizLockedMessage" style="display: none;">${quizData.lockedMessage}</p>
+                    <a href="${quizData.link}" class="quiz-link" id="quizLink">Accéder au Quiz</a>
+                </div>
             </div>
         `;
-    }
+    }).catch(error => {
+        console.error('Error loading quiz config:', error);
+    });
 }
 
 // Fonction pour mettre à jour l'état du quiz

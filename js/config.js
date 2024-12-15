@@ -215,19 +215,19 @@ export const pageContainers = {
         {
             id: 1,
             title: "Le Cours",
-            image: "https://picsum.photos/300/200?random=201",
+            image: "./img/vehicule/cours.png",
             link: "#"
         },
         {
             id: 2,
             title: "Vidéo Fabrication BMW",
-            image: "https://picsum.photos/300/200?random=202",
+            image: "./img/vehicule/bmw.svg",
             link: "#"
         },
         {
             id: 3,
             title: "Tous les Véhicules",
-            image: "https://picsum.photos/300/200?random=203",
+            image: "./img/vehicule/icone-logo-liste.png",
             link: "#"
         },
        
