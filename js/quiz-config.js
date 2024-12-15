@@ -1,9 +1,9 @@
 // Configuration des quiz pour chaque page
 export const quizConfig = {
     page2: {
-        title: "Quiz 2",
+        title: "Quiz",
         image: "./img/accueil/vehicule-auto.webp",
-        link: "#",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSdvH894CMQQuJg95xwsmNHkHhTtFKYlnhv11ZoatkiodpXh5w/viewform",
         lockedMessage: "Quiz verrouillé"
     },
     page3: {

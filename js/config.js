@@ -216,19 +216,19 @@ export const pageContainers = {
             id: 1,
             title: "Le Cours",
             image: "./img/vehicule/cours.png",
-            link: "#"
+            link: "https://drive.google.com/file/d/1DLeh3sWRVVUwMycVsmGV6lN_zZObLEsv/view"
         },
         {
             id: 2,
             title: "Vidéo Fabrication BMW",
-            image: "./img/vehicule/bmw.svg",
-            link: "#"
+            image: "./img/vehicule/BMW.svg",
+            link: "https://www.youtube.com/watch?v=TEsEevPf91w"
         },
         {
             id: 3,
             title: "Tous les Véhicules",
             image: "./img/vehicule/icone-logo-liste.png",
-            link: "#"
+            link: "https://seriouswheels.com/cars.htm"
         },
        
     ],
@@ -255,6 +255,12 @@ export const pageContainers = {
             id: 4,
             title: "Sous-container 4 de la page 3",
             image: "https://picsum.photos/300/200?random=304",
+            link: "#"
+        },
+        {
+            id: 5,
+            title: "Sous-container 5 de la page 3",
+            image: "https://picsum.photos/300/200?random=305",
             link: "#"
         },
         {
