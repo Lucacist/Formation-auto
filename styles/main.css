@@ -215,16 +215,17 @@ body {
 
 #logoutBtn {
     padding: 0.5rem 1rem;
-    background-color: #e74c3c;
+    background-color: var(--secondary-color);
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.9rem;
     transition: background-color 0.3s;
 }
 
 #logoutBtn:hover {
-    background-color: #c0392b;
+    background-color: #2980b9;
 }
 
 .sub-container-wrapper {
@@ -356,7 +357,8 @@ a {
 @media (min-width: 1000px) {
     .back-btn,
     .quiz-toggle-btn,
-    .login-btn {
+    .login-btn,
+    #logoutBtn {
         width: 200px;
         text-align: center;
         display: flex;
